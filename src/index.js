@@ -1,8 +1,10 @@
 require ('./models/user');
+require ('./models/Track');
 const express = require('express');
 const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
 const authRoutes = require ('./routes/authRoutes');
+const trackRoutes = require('./routes/trackRoutes')
 const requireAuth = require ('./middlewares/requireAuth')
 
 
@@ -10,6 +12,7 @@ const app = express ();
 
 app.use(bodyParser.json());
 app.use(authRoutes);
+app.use(trackRoutes);
 
 const mongoUri ='mongodb+srv://Leeroy:Stembiso369@cluster0.h0rod.mongodb.net/<dbname>?retryWrites=true&w=majority'
 mongoose.connect(mongoUri, {
